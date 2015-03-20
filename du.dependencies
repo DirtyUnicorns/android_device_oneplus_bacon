@@ -20,11 +20,6 @@
     "branch":       "lollipop-caf"
   },
   {
-    "repository":   "TheMuppets/proprietary_vendor_oneplus",
-    "target_path":  "vendor/oneplus",
-    "branch":       "cm-12.0"
-  },
-  {
     "repository":   "DirtyUnicorns/android_vendor_oppo",
     "target_path":  "vendor/oppo",
     "branch":       "lollipop-caf"
