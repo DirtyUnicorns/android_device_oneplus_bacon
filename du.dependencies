@@ -1,26 +1,26 @@
 [
   {
-    "repository":   "DirtyUnicorns/android_device_oppo_msm8974-common",
+    "repository":   "android_device_oppo_msm8974-common",
     "target_path":  "device/oppo/msm8974-common",
     "branch":       "lollipop-caf"
   },
   {
-    "repository":   "DirtyUnicorns/android_device_oppo_common",
+    "repository":   "android_device_oppo_common",
     "target_path":  "device/oppo/common",
     "branch":       "lollipop-caf"
   },
   {
-    "repository":   "DirtyUnicorns/android_device_qcom-common",
+    "repository":   "android_device_qcom-common",
     "target_path":  "device/qcom/common",
     "branch":       "lollipop-caf"
   },
   {
-    "repository":   "DirtyUnicorns/android_kernel_oneplus_msm8974",
+    "repository":   "android_kernel_oneplus_msm8974",
     "target_path":  "kernel/oneplus/msm8974",
     "branch":       "lollipop-caf"
   },
   {
-    "repository":   "DirtyUnicorns/android_vendor_oppo",
+    "repository":   "android_vendor_oppo",
     "target_path":  "vendor/oppo",
     "branch":       "lollipop-caf"
   }
