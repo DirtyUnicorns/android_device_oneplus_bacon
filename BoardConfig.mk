@@ -32,7 +32,7 @@ TARGET_BOARD_PLATFORM := msm8974
 TARGET_BOARD_PLATFORM_GPU := qcom-adreno330
 
 # Build with Clang by default
-USE_CLANG_PLATFORM_BUILD := true
+# USE_CLANG_PLATFORM_BUILD := true
 
 # Architecture
 TARGET_ARCH := arm
@@ -52,7 +52,7 @@ BOARD_KERNEL_SEPARATED_DT := true
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x02000000 --tags_offset 0x01e00000
 BOARD_DTBTOOL_ARGS := -2
 TARGET_KERNEL_ARCH := arm
-TARGET_KERNEL_CONFIG := cyanogenmod_bacon_defconfig
+TARGET_KERNEL_CONFIG := unicornblood_bacon_defconfig
 TARGET_KERNEL_SOURCE := kernel/oneplus/msm8974
 TARGET_KERNEL_CROSS_COMPILE_PREFIX := arm-linux-androideabi-
 
@@ -72,11 +72,10 @@ AUDIO_FEATURE_LOW_LATENCY_PRIMARY := true
 USE_CUSTOM_AUDIO_POLICY := 1
 
 # Bluetooth
-BLUETOOTH_HCI_USE_MCT := true
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(PLATFORM_PATH)/bluetooth
-BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_QCOM := true
 QCOM_BT_USE_SMD_TTY := true
+BLUETOOTH_HCI_USE_MCT := true
 
 # Camera
 TARGET_USE_COMPAT_GRALLOC_ALIGN := true
@@ -103,6 +102,7 @@ TARGET_HW_DISK_ENCRYPTION := true
 # Flags for modem (we still have an old modem)
 COMMON_GLOBAL_CFLAGS += -DUSE_RIL_VERSION_10
 COMMON_GLOBAL_CPPFLAGS += -DUSE_RIL_VERSION_10
+FEATURE_QCRIL_UIM_SAP_SERVER_MODE := true
 
 # Filesystem
 BOARD_FLASH_BLOCK_SIZE := 131072
@@ -152,7 +152,7 @@ BOARD_NFC_CHIPSET := pn547
 BOARD_USES_QCOM_HARDWARE := true
 
 # Radio
-TARGET_RIL_VARIANT := caf
+# TARGET_RIL_VARIANT := caf
 
 # Recovery
 TARGET_RECOVERY_FSTAB := $(PLATFORM_PATH)/rootdir/etc/fstab.bacon
@@ -164,7 +164,7 @@ TARGET_NO_RPC := true
 include device/qcom/sepolicy/sepolicy.mk
 
 BOARD_SEPOLICY_DIRS += \
-    $(PLATFORM_PATH)/sepolicy
+   $(PLATFORM_PATH)/sepolicy
 
 # Wifi
 BOARD_HAS_QCOM_WLAN              := true
@@ -185,9 +185,6 @@ WPA_SUPPLICANT_VERSION           := VER_0_8_X
 # Inherit from QC proprietary
 ifneq ($(QCPATH),)
 -include $(QCPATH)/common/msm8974/BoardConfigVendor.mk
-
-# Bluetooth
-FEATURE_QCRIL_UIM_SAP_SERVER_MODE := true
 
 # QCNE
 ifeq ($(BOARD_USES_QCNE),true)
