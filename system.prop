@@ -78,3 +78,6 @@ persist.timed.enable=true
 # Wifi
 wifi.interface=wlan0
 wifi.supplicant_scan_interval=15
+
+# du updater
+ro.du.updater=bacon
