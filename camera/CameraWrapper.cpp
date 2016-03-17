@@ -43,8 +43,6 @@ using namespace android;
 static Mutex gCameraWrapperLock;
 static camera_module_t *gVendorModule = 0;
 
-static bool gClearImageEnabled = false;
-
 static int camera_device_open(const hw_module_t *module, const char *name,
         hw_device_t **device);
 static int camera_get_number_of_cameras(void);
@@ -339,7 +337,7 @@ static int camera_cancel_picture(struct camera_device *device)
 }
 
 static int camera_set_parameters(struct camera_device *device,
-        const char *parameters)
+        const char *params)
 {
     ALOGV("%s->%08X->%08X", __FUNCTION__, (uintptr_t)device,
             (uintptr_t)(((wrapper_camera_device_t*)device)->vendor));
@@ -347,23 +345,7 @@ static int camera_set_parameters(struct camera_device *device,
     if (!device)
         return -EINVAL;
 
-	const char *tmpParams = strdup(parameters);
-
-    CameraParameters2 params;
-	params.unflatten(String8(tmpParams));
-
-    gClearImageEnabled = strcmp(params.get("clear-image"), "on") == 0;
-    if (gClearImageEnabled) {
-        params.set("high-resolution", "1300");
-        params.set("superzoom", "0");
-    } else {
-        params.set("high-resolution", "0");
-        params.remove("superzoom");
-    }
-
-    delete tmpParams;
-
-    return VENDOR_CALL(device, set_parameters, strdup(params.flatten().string()));
+    return VENDOR_CALL(device, set_parameters, params);
 }
 
 static char *camera_get_parameters(struct camera_device *device)
@@ -416,12 +398,6 @@ static char *camera_get_parameters(struct camera_device *device)
             params.set(CameraParameters::KEY_HORIZONTAL_VIEW_ANGLE, "65.5");
         }
     }
-
-    params.set("clear-image-values", "off,on");
-    params.set("clear-image", gClearImageEnabled ? "on" : "off");
-
-    params.remove("high-resolution");
-    params.remove("superzoom");
 
     return strdup(params.flatten().string());
 }
