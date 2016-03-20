@@ -78,8 +78,3 @@ wifi.supplicant_scan_interval=15
 
 # du updater
 ro.du.updater=bacon
-
-# USB
-sys.usb.config=mtp,adb
-persist.sys.usb.config=mtp,adb
-ro.adb.secure=0
