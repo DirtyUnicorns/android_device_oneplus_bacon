@@ -59,8 +59,8 @@ PRODUCT_PACKAGES += \
     camera.bacon
 
 # Build SnapDragon Camera Inline
-PRODUCT_PACKAGES += \
-    Snap
+#PRODUCT_PACKAGES += \
+#    Snap
 
 # Charger
 PRODUCT_PACKAGES += \
